@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/*.js", "use": "@vercel/node" },
+    { "src": "public/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/public/main.html" },
+    { "src": "/main.html", "dest": "/public/main.html" },
+    { "src": "/pair", "dest": "/public/pair.html" },
+    { "src": "/pair.html", "dest": "/public/pair.html" },
+
+    /* keep your old frontend calls working (pair.html uses `/code?number=...`) */
+    { "src": "/code", "dest": "/api/pair" },
+
+    /* qr route from main.html/window.open('/qr') -> serverless function */
+    { "src": "/qr", "dest": "/api/qr" },
+
+    /* default - allow direct api/* invocation if needed */
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+
+    /* serve other static assets from /public */
+    { "src": "/(.*)", "dest": "/public/$1" }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
