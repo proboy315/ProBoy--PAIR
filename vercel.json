@@ -5,7 +5,7 @@
     { "src": "public/**", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/", "dest": "/public/main.html" },
+    { "src": "/", "dest": "/public/pair.html" },
     { "src": "/main.html", "dest": "/public/main.html" },
     { "src": "/pair", "dest": "/public/pair.html" },
     { "src": "/pair.html", "dest": "/public/pair.html" },
